@@ -18,3 +18,7 @@ aws>
 ## TODO
 
 - [ ] Support for Docker secrets and `~/.aws/credentials`?
+
+## Contact developers
+
+https://gitter.im/morecontainers/
