@@ -1,0 +1,20 @@
+--- clidriver.py.orig
++++ clidriver.py
+@@ -10,6 +10,7 @@
+ # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+ # ANY KIND, either express or implied. See the License for the specific
+ # language governing permissions and limitations under the License.
++import os
+ import sys
+ import signal
+ import logging
+@@ -190,6 +191,9 @@
+         """
+         if args is None:
+             args = sys.argv[1:]
++        if os.environ.get('AWS_ENDPOINT_URL'):
++            args.insert(1, os.environ.get('AWS_ENDPOINT_URL'))
++            args.insert(1, '--endpoint-url')
+         command_table = self._get_command_table()
+         parser = self._create_parser(command_table)
+         self._add_aliases(command_table, parser)
