@@ -2,7 +2,7 @@
 
 Container with [aws-cli] and [aws-shell] installed.
 
-An automated build of this image is on Docker Hub: https://hub.docker.com/r/moreutils/awscli/
+An automated build of this image is on Docker Hub: https://hub.docker.com/r/morecontainers/awscli/
 
 [aws-cli]: https://github.com/aws/aws-cli
 [aws-shell]: https://github.com/awslabs/aws-shell
