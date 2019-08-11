@@ -9,15 +9,26 @@ An automated build of this image is on Docker Hub: https://hub.docker.com/r/more
 
 ## Examples
 
-### Docker Engine and DigitalOcean Spaces
+### Calling aws-cli directly
 
 ```
 $ cat aws.env
 AWS_ACCESS_KEY_ID=1234...
 AWS_SECRET_ACCESS_KEY=ABCD....
+AWS_DEFAULT_REGION=us-east-1
+$ docker run --rm --env-file aws.env morecontainers/awscli aws s3 ls
+2017-11-05 12:48:32 my-bucket
+```
+
+### Docker Engine and DigitalOcean Spaces
+
+```
+$ cat do.env
+AWS_ACCESS_KEY_ID=1234...
+AWS_SECRET_ACCESS_KEY=ABCD....
 AWS_ENDPOINT_URL=https://ams3.digitaloceanspaces.com
 $ mkdir -p ~/.aws ~/data
-$ docker run -it --rm -w /data -v ~/.aws:/.aws -v ~/data:/data --user $(id -u):$(id -g) --env-file aws.env morecontainers/awscli
+$ docker run -it --rm -w /data -v ~/.aws:/.aws -v ~/data:/data --user $(id -u):$(id -g) --env-file do.env morecontainers/awscli
 Creating doc index in the background. It will be a few minutes before all documentation is available.
 aws> !pwd
 /data
@@ -38,11 +49,11 @@ welcome.html
 ### Podman and DigitalOcean Spaces
 
 ```
-$ cat aws.env
+$ cat do.env
 AWS_ACCESS_KEY_ID=1234...
 AWS_SECRET_ACCESS_KEY=ABCD....
 AWS_ENDPOINT_URL=https://ams3.digitaloceanspaces.com
-$ podman run -it --rm -v ~/data:/data --env-file aws.env morecontainers/awscli
+$ podman run -it --rm -v ~/data:/data --env-file do.env morecontainers/awscli
 Creating doc index in the background. It will be a few minutes before all documentation is available.
 aws> s3 ls
 2017-11-05 12:48:32 my-bucket
