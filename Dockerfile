@@ -1,5 +1,4 @@
 FROM debian:stable-slim AS x
-LABEL maintainer="Omnimodular <docker@omnimodular.com>"
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends awscli aws-shell \
  && rm -rf /var/lib/apt/lists/*
@@ -14,5 +13,6 @@ RUN patch clidriver.py clidriver.py.patch
 FROM x
 COPY --from=y clidriver.py /usr/lib/python3/dist-packages/awscli/
 COPY entrypoint.sh /usr/local/bin/
+WORKDIR /data
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["aws-shell"]
