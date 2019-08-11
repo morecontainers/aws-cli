@@ -13,6 +13,5 @@ RUN patch clidriver.py clidriver.py.patch
 FROM x
 COPY --from=y clidriver.py /usr/lib/python3/dist-packages/awscli/
 COPY entrypoint.sh /usr/local/bin/
-WORKDIR /data
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["aws-shell"]
