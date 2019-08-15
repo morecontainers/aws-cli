@@ -4,8 +4,14 @@ Container with [aws-cli] and [aws-shell] installed.
 
 An automated build of this image is on Docker Hub: https://hub.docker.com/r/morecontainers/awscli/
 
+This version of [aws-cli] is patched at the library level to support a new
+environment variable called `AWS_ENDPOINT_URL` which corresponds to a default
+`--endpoint-url [URL]` to allow seemless integration with other S3 compatible
+object stores such as [digital-ocean-spaces].
+
 [aws-cli]: https://github.com/aws/aws-cli
 [aws-shell]: https://github.com/awslabs/aws-shell
+[digital-ocean-spaces]: https://www.digitalocean.com/products/spaces/
 
 ## Examples
 
