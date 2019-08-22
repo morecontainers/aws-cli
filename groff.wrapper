@@ -1,0 +1,8 @@
+#!/bin/sh
+cat <<EOF
+The AWS Command Line Interface is a unified tool to manage your AWS services.
+
+For full documentation visit:
+
+https://docs.aws.amazon.com/cli/latest/reference/
+EOF
