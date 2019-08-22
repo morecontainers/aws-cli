@@ -1,6 +1,6 @@
 FROM debian:stable-slim AS x
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y awscli aws-shell \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends awscli aws-shell \
  && rm -rf /var/lib/apt/lists/*
 RUN aws-shell < /dev/null 2> /dev/null || true
 
