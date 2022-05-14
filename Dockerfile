@@ -14,7 +14,6 @@ RUN patch clidriver.py clidriver.py.patch
 
 FROM x
 COPY --from=y clidriver.py /usr/lib/python3/dist-packages/awscli/
-COPY groff.wrapper /usr/bin/groff
 COPY entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["aws-shell"]
