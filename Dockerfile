@@ -1,7 +1,8 @@
 FROM debian:stable-slim AS x
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends awscli aws-shell \
- && rm -rf /var/lib/apt/lists/*
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends awscli python3-pip \
+ && rm -rf /var/lib/apt/lists/* \
+ && python3 -m pip install --no-cache aws-shell
 RUN aws-shell < /dev/null 2> /dev/null || true
 
 FROM debian:stable-slim AS y
