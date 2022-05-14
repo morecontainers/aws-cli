@@ -1,0 +1,16 @@
+on:
+  push:
+    branches: [ master ]
+    
+env:
+  REPOSITORY: morecontainers/awscli
+  TAG: latest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: docker login -u $HUB_DOCKER_USERNAME -p $HUB_DOCKER_PASSWORD
+    - run: docker build --tag $REPOSITORY:$TAG .
+    - run: docker push $REPOSITORY
